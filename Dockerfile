@@ -92,4 +92,4 @@ RUN \
   rm -rf /root/image
 
 ## switch back to default user
-USER 1984
+# USER 1984 - only if it is needed
