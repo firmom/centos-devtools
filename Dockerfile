@@ -11,13 +11,12 @@ USER 0
 
 ## install scripts
 RUN \
-  yum -y install yum-plugin-copr && \
-  yum -y copr enable helber/atom && \
-  yum -y update && \
   yum -y install epel-release && \
+  wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm && \
+  rpm -ivh mysql57-community-release-el7-9.noarch.rpm && \
+  yum -y update && \
   yum -y groupinstall "Development Tools" && \
   yum -y install libcurl && \
-  yum -y install atom && \
   yum -y install git wget && \
   yum -y install gcc gcc-c++ g++ make automake autoconf curl-devel openssl-devel zlib-devel httpd-devel apr-devel apr-util-devel sqlite-devel && \
   yum -y install nodejs npm --enablerepo=epel && \
@@ -26,7 +25,12 @@ RUN \
   yum -y install php php-cli php-mysql php-dev libapache2-mod-php php-mcrypt php-curl php-sqlite3 php-pear php-imagick php-xdebug && \
   yum -y install mysql-client mysql-server && \
   yum -y install vim iputils && \
-  yum install curlftpfs fuse-sshfs samba-client samba-common cifs-utils --enablerepo=epel
+  yum -y --enablerepo=epel install curlftpfs fuse-sshfs samba-client samba-common cifs-utils
+
+# atom install
+RUN \
+  wget https://github.com/atom/atom/releases/download/v1.19.0/atom.x86_64.rpm && \
+  yum -y localinstall atom.x86_64.rpm
 
 # golang
 RUN \
@@ -58,7 +62,6 @@ RUN \
 
 # atom plugins
 RUN \
-  apt-get install -y atom && \
   apm install file-icons && \
   apm install go-debug && \
   apm install go-plus && \
@@ -82,7 +85,7 @@ RUN gem install sass
 RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
 # load configs
-ADD image /root/image\
+ADD image /root/image
 RUN \
   find /root/image -type f -regextype posix-extended -iregex '^.*\/((\.[A-Za-z0-9_\-\.]+)|([A-Za-z0-9_\-])|([A-Za-z0-9_\-]+[A-Za-z0-9_\-\.]\.(js|html|po|css|sh|conf|md|txt|json|py)))$' -exec sed -i -e 's/\r//' {} \; && \
   cp -r /root/image/* / && \
