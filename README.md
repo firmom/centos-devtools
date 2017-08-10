@@ -9,7 +9,7 @@ It is based on [docker-headless-vnc-container](https://github.com/ConSol/docker-
 ## Run devtools
 Recomended way to run devtools:
 ```bash
-docker run -it --rm -p 5901:5901 -p 6901:6901 -p 80:80 -e VNC_RESOLUTION=1600x900 -e VNC_COL_DEPTH=24 -e VNC_PASSWORD=pass123 --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -v myhome:/root -v mywww:/var/www spozoga/centos-devtools
+docker run -it --rm -p 5901:5901 -p 6901:6901 -p 80:80 -e VNC_RESOLUTION=1600x900 -e VNC_COL_DEPTH=24 -e VNC_PW=pass123 --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -v myhome:/root -v mywww:/var/www spozoga/centos-devtools
 ```
 
 ## VNC client
