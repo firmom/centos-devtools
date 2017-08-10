@@ -3,7 +3,7 @@ MAINTAINER Sebastian Pożoga <sebastian@pozoga.eu>
 
 # ENVS
 ENV GOROOT="/usr/local/go"
-ENV GOPATH="/root/go"
+ENV GOPATH="$HOME/go"
 ENV PATH="${PATH}:$GOROOT/bin:$GOPATH/bin"
 
 ## switch to admin
@@ -90,6 +90,3 @@ RUN \
   find /root/image -type f -regextype posix-extended -iregex '^.*\/((\.[A-Za-z0-9_\-\.]+)|([A-Za-z0-9_\-])|([A-Za-z0-9_\-]+[A-Za-z0-9_\-\.]\.(js|html|po|css|sh|conf|md|txt|json|py)))$' -exec sed -i -e 's/\r//' {} \; && \
   cp -r /root/image/* / && \
   rm -rf /root/image
-
-## switch back to default user
-# USER 1984 - only if it is needed
