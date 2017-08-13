@@ -35,4 +35,4 @@ mount -t cifs -o username=<share user>,password=<share password> //MACHINE_IP/<s
 
 ## Docker image
 Use official docker hub to pull pre-build image:
-https://hub.docker.com/r/spozoga/devtools/
+https://hub.docker.com/r/spozoga/centos-devtools/
