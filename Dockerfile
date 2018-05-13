@@ -110,7 +110,8 @@ RUN \
   apm install wordpress-api && \
   apm install autocomplete-php && \
   apm install aligner-php && \
-  apm install git-time-machine
+  apm install git-time-machine && \
+  apm install php-getters-setters
 
 # load configs
 ADD image /root/image
