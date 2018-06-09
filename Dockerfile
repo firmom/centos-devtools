@@ -34,7 +34,22 @@ RUN \
   yum -y install httpd && \
   yum -y install mysql-client mysql-server && \
   yum -y install vim iputils && \
+  yum -y install vim ansible && \
   yum -y --enablerepo=epel install curlftpfs fuse-sshfs samba-client samba-common cifs-utils
+
+# install docker
+RUN yum remove -y docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
+RUN yum install -y yum-utils device-mapper-persistent-data lvm2
+RUN yum-config-manager -y --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+RUN yum-config-manager -y --enable docker-ce-edge
+RUN yum install -y docker-ce
+#RUN systemctl start docker
+
+# python & pip
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+  python get-pip.py && \
+  rm get-pip.py
+RUN pip install netaddr Jinja2
 
 # php framworks
 RUN \
