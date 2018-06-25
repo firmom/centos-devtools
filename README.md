@@ -15,16 +15,19 @@ docker run -it --rm \
   -p 3000:3000 \
   -p 3001:3001 \
   -p 80:80 \
+  -p 8080:8080 \
+  -p 5555:5555 \
   -e VNC_RESOLUTION=1600x900 \
   -e VNC_COL_DEPTH=24 \
   -e VNC_PW=pass123 \
-  --cap-add SYS_ADMIN \
-  --cap-add DAC_READ_SEARCH \
   -v mywork:/headless/Desktop/work \
   -v myatom:/headless/.atom \
   -v mywww:/var/www \
   -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /var/lib/docker:/var/lib/docker \
   --privileged=true \
+  --cap-add SYS_ADMIN \
+  --cap-add DAC_READ_SEARCH \
   spozoga/centos-devtools
 ```
 
