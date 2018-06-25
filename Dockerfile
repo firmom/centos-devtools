@@ -37,13 +37,22 @@ RUN \
   yum -y install vim ansible && \
   yum -y --enablerepo=epel install curlftpfs fuse-sshfs samba-client samba-common cifs-utils
 
+# install visual studio code
+RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
+RUN sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+RUN \
+  yum -y install code
+#  yum check-update -y && \
+
 # install docker
 RUN yum remove -y docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
 RUN yum install -y yum-utils device-mapper-persistent-data lvm2
 RUN yum-config-manager -y --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 RUN yum-config-manager -y --enable docker-ce-edge
 RUN yum install -y docker-ce
-#RUN systemctl start docker
+RUN \
+  sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose && \
+  chmod +x /usr/local/bin/docker-compose
 
 # python & pip
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
@@ -77,8 +86,8 @@ RUN gem install sass
 
 # golang
 RUN \
-  wget https://storage.googleapis.com/golang/go1.8.linux-amd64.tar.gz && \
-  tar -C /usr/local -xzf go1.8.linux-amd64.tar.gz
+  wget https://storage.googleapis.com/golang/go1.10.3.linux-amd64.tar.gz && \
+  tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
 
 # golang - popular packages
 RUN \
@@ -92,6 +101,10 @@ RUN \
   go get golang.org/x/crypto/bcrypt && \
   go get github.com/buger/jsonparser
 
+# golang- dependency manager
+RUN \
+  go get -u golang.org/x/vgo
+
 # golang - atom packages
 RUN \
   go get -u golang.org/x/tools/cmd/goimports && \
@@ -101,7 +114,17 @@ RUN \
   go get -u github.com/alecthomas/gometalinter && \
   go get -u github.com/zmb3/gogetdoc && \
   go get -u github.com/rogpeppe/godef && \
-  go get -u golang.org/x/tools/cmd/guru
+  go get -u golang.org/x/tools/cmd/guru && \
+  go get -u golang.org/x/tools/cmd/goimports && \
+  go get -u golang.org/x/tools/cmd/gorename && \
+  go get -u github.com/sqs/goreturns && \
+  go get -u github.com/nsf/gocode && \
+  go get -u github.com/zmb3/gogetdoc && \
+  go get -u github.com/zmb3/goaddimport && \
+  go get -u github.com/rogpeppe/godef && \
+  go get -u golang.org/x/tools/cmd/guru && \
+  go get -u github.com/fatih/gomodifytags && \
+  go get -u github.com/tpng/gopkgs
 
 # atom install
 RUN \
