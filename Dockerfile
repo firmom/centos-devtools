@@ -101,6 +101,12 @@ RUN \
   go get golang.org/x/crypto/bcrypt && \
   go get github.com/buger/jsonparser
 
+# golang - popular tools
+RUN \
+  go get -u github.com/goatcms/goatcli && \
+  go get -u github.com/goatcms/goatcms && \
+  go get -u github.com/golang/dep/cmd/dep
+
 # golang- dependency manager
 RUN \
   go get -u golang.org/x/vgo
@@ -157,3 +163,7 @@ RUN \
   find /root/image -type f -regextype posix-extended -iregex '^.*\/((\.[A-Za-z0-9_\-\.]+)|([A-Za-z0-9_\-])|([A-Za-z0-9_\-]+[A-Za-z0-9_\-\.]\.(js|html|po|css|sh|conf|md|txt|json|py)))$' -exec sed -i -e 's/\r//' {} \; && \
   cp -r /root/image/* / && \
   rm -rf /root/image
+
+# prepare new entrypoint
+RUN chmod +x /firmom-centos-devtools.sh
+ENTRYPOINT ["/firmom-centos-devtools.sh"]

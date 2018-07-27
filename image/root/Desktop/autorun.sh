@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# The autorun.sh file is a text file that can be used by the AutoRun and AutoPlay components, code etc.
-# It is a place to add your custom container code like mount ssh/smb/ftp drivers, run sync apps, conf scripts etc.
+# 1. And add your mount network drives. For example:
+#   mkdir "$HOME/Desktop/shared"
+#   mount -t cifs -o username=<share user>,password=<share password> //MACHINE_IP/<share name> "$HOME/Desktop/shared"
 
-#########################
-### Write your code there
-#########################
+# 2. Add your startup sequence
+#   "The only limit to your impact is your imagination and commitment." - Tony Robbins
