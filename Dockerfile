@@ -104,7 +104,6 @@ RUN \
 # golang - popular tools
 RUN \
   go get -u github.com/goatcms/goatcli && \
-  go get -u github.com/goatcms/goatcms && \
   go get -u github.com/golang/dep/cmd/dep
 
 # golang- dependency manager
