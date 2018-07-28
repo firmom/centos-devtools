@@ -24,11 +24,6 @@ if [ ! -d "/headless/Desktop/work/goatcms/goatcore" ]; then
 fi
 ln -s /headless/Desktop/work/goatcms/goatcore /headless/go/src/github.com/goatcms/goatcore
 
-if [ ! -d "/headless/Desktop/work/firmom/developer-desktop" ]; then
-  git clone "https://github.com/firmom/developer-desktop" "/headless/Desktop/work/firmom/developer-desktop"
-fi
-ln -s /headless/Desktop/work/firmom/developer-desktop /headless/go/src/github.com/firmom/developer-desktop
-
 if [ ! -d "/headless/Desktop/work/goatcms/emptyapp" ]; then
   git clone "https://github.com/goatcms/emptyapp" "/headless/Desktop/work/goatcms/emptyapp"
 fi
