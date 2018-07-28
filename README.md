@@ -13,7 +13,7 @@ docker run -it --rm -p 5901:5901 -p 6901:6901 -p 3000:3000 -p 3001:3001 -p 80:80
 ```
 
 ## Git configuration
-You can configure git by add GIT_USER_NAME and GIT_USER_EMAIL to your environments. Alternative way is add configuration to autorun.sh
+You can configure git by add GIT_USER_NAME and GIT_USER_EMAIL to your environments. Alternative way you can add configuration to autorun.sh
 ```
 git config --global user.email "$GIT_USER_EMAIL"
 git config --global user.name "$GIT_USER_NAME"
