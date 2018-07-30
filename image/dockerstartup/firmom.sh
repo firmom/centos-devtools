@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+set -e
 
 mkdir -p /headless/go/src/github.com/goatcms/
 mkdir -p /headless/go/src/github.com/firmom/
@@ -71,6 +72,3 @@ fi
 if [ -f "/headless/Desktop/work/autorun.sh" ]; then
   sh "/headless/Desktop/work/autorun.sh"
 fi
-
-# Run parent entrypoint
-sh "/dockerstartup/vnc_startup.sh" --wait

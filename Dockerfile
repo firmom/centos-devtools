@@ -164,5 +164,6 @@ RUN \
   rm -rf /root/image
 
 # prepare new entrypoint
-RUN chmod +x /firmom-centos-devtools.sh
-ENTRYPOINT ["/firmom-centos-devtools.sh"]
+#RUN chmod +x "$STARTUPDIR/firmom-centos-devtools.sh"
+RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR
+#ENTRYPOINT ["/dockerstartup/firmom-centos-devtools.sh"]
