@@ -73,4 +73,4 @@ if [ -f "/headless/Desktop/work/autorun.sh" ]; then
 fi
 
 # Run parent entrypoint
-sh "/dockerstartup/vnc_startup.sh"
+sh "/dockerstartup/vnc_startup.sh" --wait
