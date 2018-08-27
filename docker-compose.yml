@@ -1,10 +1,7 @@
 version: '3'
 services:
   centos:
-    build: .
-    privileged: true
-    storage_opt:
-     size: "20G"
+    image: firmom/centos-devtools
     ports:
      - "5000:5000"
      - "5901:5901"
@@ -13,16 +10,24 @@ services:
      - "80:80"
      - "8080:8080"
     volumes:
-     - "mywork:/headless/Desktop/work"
-     - "myatom:/headless/.atom"
-     - "mywww:/var/www"
-     - "myssh:/headless/.ssh"
-     - "mydocker:/var/lib/docker"
+     - "fwork:/headless/Desktop/work"
+     - "fatom:/headless/.atom"
+     - "fwww:/var/www"
+     - "fssh:/headless/.ssh"
+     - "/var/lib/docker:/var/lib/docker"
      - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
      - "VNC_RESOLUTION=1600x900"
      - "VNC_COL_DEPTH=24"
      - "VNC_PW=pass123"
+     - "GIT_USER_EMAIL=your@email.com"
+     - "GIT_USER_NAME=Firstname Lastname"
     cap_add:
      - SYS_ADMIN
      - DAC_READ_SEARCH
+
+volumes:
+  fwork:
+  fatom:
+  fwww:
+  fssh:
