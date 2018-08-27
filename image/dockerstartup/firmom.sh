@@ -4,6 +4,7 @@ set -e
 mkdir -p /headless/go/src/github.com/goatcms/
 mkdir -p /headless/go/src/github.com/firmom/
 mkdir -p /headless/go/src/github.com/GameInPL/
+mkdir -p /headless/go/src/github.com/sebastianpozoga/
 
 if [ ! -d "/headless/Desktop/work/goatcms/goatcms" ]; then
   git clone "https://github.com/goatcms/goatcms" "/headless/Desktop/work/goatcms/goatcms"
