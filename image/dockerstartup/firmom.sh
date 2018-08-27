@@ -50,6 +50,14 @@ if [ ! -d "/headless/Desktop/work/firmom/cicd" ]; then
 fi
 ln -s /headless/Desktop/work/firmom/cicd /headless/go/src/github.com/firmom/cicd
 
+if [ ! -d "/headless/Desktop/work/sebastianpozoga/events.pozoga.eu" ]; then
+  git clone "https://github.com/sebastianpozoga/events.pozoga.eu" "/headless/Desktop/work/sebastianpozoga/events.pozoga.eu"
+fi
+
+if [ ! -d "/headless/Desktop/work/sebastianpozoga/docker-cleaner" ]; then
+  git clone "https://github.com/sebastianpozoga/docker-cleaner" "/headless/Desktop/work/sebastianpozoga/docker-cleaner"
+fi
+
 # Define git user
 git config --global user.email "$GIT_USER_EMAIL"
 git config --global user.name "$GIT_USER_NAME"
