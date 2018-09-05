@@ -86,8 +86,8 @@ RUN gem install sass
 
 # golang
 RUN \
-  wget https://storage.googleapis.com/golang/go1.10.3.linux-amd64.tar.gz && \
-  tar -C /usr/local -xzf go1.10.3.linux-amd64.tar.gz
+  wget https://storage.googleapis.com/golang/go1.11.linux-amd64.tar.gz && \
+  tar -C /usr/local -xzf go1.11.linux-amd64.tar.gz
 
 # golang - popular packages
 RUN \
