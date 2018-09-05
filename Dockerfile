@@ -133,7 +133,7 @@ RUN \
 
 # atom install
 RUN \
-  wget https://github.com/atom/atom/releases/download/v1.19.0/atom.x86_64.rpm && \
+  wget https://github.com/atom/atom/releases/download/v1.30.0/atom.x86_64.rpm && \
   yum -y localinstall atom.x86_64.rpm
 
 # atom plugins
@@ -164,6 +164,4 @@ RUN \
   rm -rf /root/image
 
 # prepare new entrypoint
-#RUN chmod +x "$STARTUPDIR/firmom-centos-devtools.sh"
 RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR
-#ENTRYPOINT ["/dockerstartup/firmom-centos-devtools.sh"]
