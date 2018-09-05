@@ -70,7 +70,7 @@ RUN \
 RUN \
   git clone https://github.com/nodejs/node.git && \
   cd node && \
-  git checkout v8.3.0 && \
+  git checkout v8.11.4 && \
   ./configure && make && sudo make install
 
 # nodejs packages and upgread
@@ -104,10 +104,8 @@ RUN \
 # golang - popular tools
 RUN \
   go get -u github.com/goatcms/goatcli && \
-  go get -u github.com/golang/dep/cmd/dep
-
-# golang- dependency manager
-RUN \
+  go get -u github.com/golang/dep/cmd/dep && \
+  go get -u github.com/derekparker/delve/cmd/dlv && \
   go get -u golang.org/x/vgo
 
 # golang - atom packages
