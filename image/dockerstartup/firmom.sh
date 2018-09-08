@@ -8,26 +8,36 @@ mkdir -p /headless/go/src/github.com/sebastianpozoga/
 
 if [ ! -d "/headless/Desktop/work/goatcms/goatcms" ]; then
   git clone "https://github.com/goatcms/goatcms" "/headless/Desktop/work/goatcms/goatcms"
+fi
+if [ ! -e "/headless/go/src/github.com/goatcms/goatcms"]; then
   ln -s /headless/Desktop/work/goatcms/goatcms /headless/go/src/github.com/goatcms/goatcms
 fi
 
 if [ ! -d "/headless/Desktop/work/goatcms/goatcli" ]; then
   git clone "https://github.com/goatcms/goatcli" "/headless/Desktop/work/goatcms/goatcli"
+fi
+if [ ! -e "/headless/go/src/github.com/goatcms/goatcli"]; then
   ln -s /headless/Desktop/work/goatcms/goatcli /headless/go/src/github.com/goatcms/goatcli
 fi
 
 if [ ! -d "/headless/Desktop/work/goatcms/webslots" ]; then
   git clone "https://github.com/goatcms/webslots" "/headless/Desktop/work/goatcms/webslots"
+fi
+if [ ! -e "/headless/go/src/github.com/goatcms/webslots"]; then
   ln -s /headless/Desktop/work/goatcms/webslots /headless/go/src/github.com/goatcms/webslots
 fi
 
 if [ ! -d "/headless/Desktop/work/goatcms/goatcore" ]; then
   git clone "https://github.com/goatcms/goatcore" "/headless/Desktop/work/goatcms/goatcore"
+fi
+if [ ! -e "/headless/go/src/github.com/goatcms/goatcore"]; then
   ln -s /headless/Desktop/work/goatcms/goatcore /headless/go/src/github.com/goatcms/goatcore
 fi
 
 if [ ! -d "/headless/Desktop/work/goatcms/emptyapp" ]; then
   git clone "https://github.com/goatcms/emptyapp" "/headless/Desktop/work/goatcms/emptyapp"
+fi
+if [ ! -e "/headless/go/src/github.com/goatcms/emptyapp"]; then
   ln -s /headless/Desktop/work/goatcms/emptyapp /headless/go/src/github.com/goatcms/emptyapp
 fi
 
@@ -35,7 +45,6 @@ if [ ! -d "/headless/Desktop/work/gameinpl/beerpoly-home" ]; then
   git clone "https://github.com/GameInPL/beerpoly-home" "/headless/Desktop/work/gameinpl/beerpoly-home"
   ln -s /headless/Desktop/work/gameinpl/beerpoly-home /headless/go/src/github.com/GameInPL/beerpoly-home
 fi
-
 if [ ! -d "/headless/Desktop/work/gameinpl/beerpoly" ]; then
   git clone "https://github.com/GameInPL/beerpoly" "/headless/Desktop/work/gameinpl/beerpoly"
   ln -s /headless/Desktop/work/gameinpl/beerpoly /headless/go/src/github.com/GameInPL/beerpoly
@@ -43,12 +52,10 @@ fi
 
 if [ ! -d "/headless/Desktop/work/firmom/centos-devtools" ]; then
   git clone "https://github.com/firmom/centos-devtools" "/headless/Desktop/work/firmom/centos-devtools"
-  ln -s /headless/Desktop/work/firmom/centos-devtools /headless/go/src/github.com/firmom/centos-devtools
 fi
 
 if [ ! -d "/headless/Desktop/work/firmom/cicd" ]; then
   git clone "https://github.com/firmom/cicd" "/headless/Desktop/work/firmom/cicd"
-  ln -s /headless/Desktop/work/firmom/cicd /headless/go/src/github.com/firmom/cicd
 fi
 
 if [ ! -d "/headless/Desktop/work/sebastianpozoga/events.pozoga.eu" ]; then
