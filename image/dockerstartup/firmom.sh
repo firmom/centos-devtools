@@ -3,7 +3,7 @@ set -e
 
 mkdir -p /headless/go/src/github.com/goatcms/
 mkdir -p /headless/go/src/github.com/firmom/
-mkdir -p /headless/go/src/github.com/GameInPL/
+mkdir -p /headless/go/src/github.com/gameinpl/
 mkdir -p /headless/go/src/github.com/sebastianpozoga/
 
 if [ ! -d "/headless/Desktop/work/goatcms/goatcms" ]; then
@@ -42,12 +42,18 @@ if [ ! -e "/headless/go/src/github.com/goatcms/emptyapp"]; then
 fi
 
 if [ ! -d "/headless/Desktop/work/gameinpl/beerpoly-home" ]; then
-  git clone "https://github.com/GameInPL/beerpoly-home" "/headless/Desktop/work/gameinpl/beerpoly-home"
-  ln -s /headless/Desktop/work/gameinpl/beerpoly-home /headless/go/src/github.com/GameInPL/beerpoly-home
+  git clone "https://github.com/gameinpl/beerpoly-home" "/headless/Desktop/work/gameinpl/beerpoly-home"
+
 fi
+if [ ! -e "/headless/go/src/github.com/gameinpl/beerpoly-home"]; then
+  ln -s /headless/Desktop/work/gameinpl/beerpoly-home /headless/go/src/github.com/gameinpl/beerpoly-home
+fi
+
 if [ ! -d "/headless/Desktop/work/gameinpl/beerpoly" ]; then
-  git clone "https://github.com/GameInPL/beerpoly" "/headless/Desktop/work/gameinpl/beerpoly"
-  ln -s /headless/Desktop/work/gameinpl/beerpoly /headless/go/src/github.com/GameInPL/beerpoly
+  git clone "https://github.com/gameinpl/beerpoly" "/headless/Desktop/work/gameinpl/beerpoly"
+fi
+if [ ! -e "/headless/go/src/github.com/gameinpl/beerpoly"]; then
+  ln -s /headless/Desktop/work/gameinpl/beerpoly /headless/go/src/github.com/gameinpl/beerpoly
 fi
 
 if [ ! -d "/headless/Desktop/work/firmom/centos-devtools" ]; then
@@ -76,9 +82,9 @@ if [ -f "/headless/Desktop/autorun.sh" ]; then
 fi
 
 # prepare Desktop autorun script (if the script doesn't exist)
-if [ ! -f "/headless/Desktop/autorun.sh" ]; then
+if [ ! -f "/headless/Desktop/work/autorun.sh" ]; then
 cat > /headless/Desktop/work/autorun.sh << EndOfMessage
-#!/bin/sh
+#!/bin/bash
 
 # Add your custom code to run here
 # ...
