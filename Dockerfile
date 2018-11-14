@@ -162,8 +162,8 @@ RUN \
   rm -rf /root/image
 
 RUN \
-  chown +x /headless/Desktop/run-beerpoly-home.sh && \
-  chown +x /headless/Desktop/atom.sh
+  chmod +x /headless/Desktop/run-beerpoly-home.sh && \
+  chmod +x /headless/Desktop/atom.sh
 
 # prepare new entrypoint
 RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR
