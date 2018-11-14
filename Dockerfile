@@ -154,12 +154,16 @@ RUN \
   apm install git-time-machine && \
   apm install php-getters-setters
 
-# load configs
+# load image
 ADD image /root/image
 RUN \
   find /root/image -type f -regextype posix-extended -iregex '^.*\/((\.[A-Za-z0-9_\-\.]+)|([A-Za-z0-9_\-])|([A-Za-z0-9_\-]+[A-Za-z0-9_\-\.]\.(js|html|po|css|sh|conf|md|txt|json|py)))$' -exec sed -i -e 's/\r//' {} \; && \
   cp -r /root/image/* / && \
   rm -rf /root/image
+
+RUN \
+  chown +x /headless/Desktop/run-beerpoly-home.sh && \
+  chown +x /headless/Desktop/atom.sh
 
 # prepare new entrypoint
 RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR
