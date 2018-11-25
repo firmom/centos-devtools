@@ -27,6 +27,7 @@ cat > $HOME/go/src/github.com/gameinpl/beerpoly-home/.goat/secrets.json << EndOf
 }
 EndOfMessage
 
+rm -rf translates
 goatcli build
 dep ensure
 go run ./main.go run --host=:80 --env=dev
