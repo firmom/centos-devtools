@@ -29,5 +29,7 @@ EndOfMessage
 
 rm -rf translates
 goatcli build
-dep ensure
+if [ -f "Gopkg.toml" ]; then
+  dep ensure
+fi
 go run ./main.go run --host=:80 --env=dev
