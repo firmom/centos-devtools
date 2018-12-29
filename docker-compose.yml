@@ -1,7 +1,7 @@
 version: '3'
 services:
   centos:
-    image: firmom/centos-devtools
+    image: firmom/centos-devtools:prod
     ports:
      - "5000:5000"
      - "5901:5901"
