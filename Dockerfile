@@ -1,4 +1,4 @@
-FROM consol/centos-xfce-vnc:1.1.0
+FROM consol/centos-xfce-vnc:1.4.0
 MAINTAINER Sebastian Pożoga <sebastian@pozoga.eu>
 
 # ENVS
@@ -9,40 +9,41 @@ ENV PATH="${PATH}:$GOROOT/bin:$GOPATH/bin"
 ## switch to admin
 USER 0
 
-## add repositories
-RUN \
-  wget -q https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
-  wget -q http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
-  rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm && \
-  wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm && \
-  yum -y localinstall mysql57-community-release-el7-9.noarch.rpm && \
-  yum -y update
-
-# config pakages
-RUN \
-  yum -y install yum-utils && \
-  yum-config-manager --enable remi-php71
+#RUN yum -y update
 
 # install packages
 RUN \
+  yum -y install yum-utils && \
   yum -y groupinstall "Development Tools" && \
   yum -y install libcurl && \
   yum -y install git && \
   yum -y install php php-opcache php-cli php-mysql php-dev libapache2-mod-php php-mcrypt php-curl php-sqlite3 php-pear php-imagick php-xdebug && \
   yum -y install gcc gcc-c++ g++ make automake autoconf curl-devel openssl-devel zlib-devel httpd-devel apr-devel apr-util-devel sqlite-devel && \
-  yum -y install ruby-rdoc ruby-devel && \
   yum -y install httpd && \
-  yum -y install mysql-client mysql-server && \
   yum -y install vim iputils && \
-  yum -y install vim ansible && \
   yum -y --enablerepo=epel install curlftpfs fuse-sshfs samba-client samba-common cifs-utils
+
+# install ruby
+RUN yum install -y cc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel sqlite-devel && \
+  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB && \
+  \curl -L get.rvm.io | bash -s stable
+
+RUN /bin/bash -l -c "rvm requirements run"
+RUN /bin/bash -l -c "rvm install 2.6"
+RUN /bin/bash -l -c "rvm use 2.6 --default"
+
+RUN wget https://rubygems.org/rubygems/rubygems-3.0.2.zip && \
+  unzip rubygems-3.0.2.zip && \
+  cd rubygems-3.0.2 && \
+  /bin/bash -l -c "ruby setup.rb"
+
+# sass install
+RUN /bin/bash -l -c "gem install sass"
 
 # install visual studio code
 RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
 RUN sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-RUN \
-  yum -y install code
-#  yum check-update -y && \
+RUN yum -y install code
 
 # install docker
 RUN yum remove -y docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
@@ -80,9 +81,6 @@ RUN \
   npm install -g jshint && \
   npm install -g bower && \
   npm install -g yarn
-
-# sass install
-RUN gem install sass
 
 # golang
 RUN \
