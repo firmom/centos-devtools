@@ -8,6 +8,7 @@ atom "$HOME/Desktop/work/goatcms/goatcore" \
   "$HOME/Desktop/work/gameinpl/beerpoly-home" \
   "$HOME/Desktop/work/gameinpl/beerpoly" \
   "$HOME/Desktop/work/firmom/centos-devtools" \
+  "$HOME/Desktop/work/firmom/tojestmysl.pl" \
   "$HOME/Desktop/work/sebastianpozoga/events.pozoga.eu" \
   "$HOME/Desktop/work/firmom/cicd" \
   "$HOME/Desktop/work/sebastianpozoga/docker-cleaner"

@@ -64,6 +64,13 @@ if [ ! -d "/headless/Desktop/work/firmom/cicd" ]; then
   git clone "https://github.com/firmom/cicd" "/headless/Desktop/work/firmom/cicd"
 fi
 
+if [ ! -d "/headless/Desktop/work/firmom/tojestmysl.pl" ]; then
+  git clone "https://github.com/firmom/tojestmysl.pl" "/headless/Desktop/work/firmom/tojestmysl.pl"
+fi
+if [ ! -e "/headless/go/src/github.com/firmom/tojestmysl.pl" ]; then
+  ln -s /headless/Desktop/work/firmom/tojestmysl.pl /headless/go/src/github.com/firmom/tojestmysl.pl
+fi
+
 if [ ! -d "/headless/Desktop/work/sebastianpozoga/events.pozoga.eu" ]; then
   git clone "https://github.com/sebastianpozoga/events.pozoga.eu" "/headless/Desktop/work/sebastianpozoga/events.pozoga.eu"
 fi
